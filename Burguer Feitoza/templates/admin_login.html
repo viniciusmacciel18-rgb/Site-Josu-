@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#080b08">
+    <title>Acesso administrativo | Burguer Feitoza</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}?v=1">
+</head>
+<body class="login-page">
+    <main class="login-card">
+        <a class="admin-brand" href="/">BF <span>BURGUER FEITOZA</span></a>
+        <p class="eyebrow">ACESSO RESTRITO</p>
+        <h1>Painel do açougue</h1>
+        <p class="muted">Entre com a senha administrativa para gerenciar produtos e estoque.</p>
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+            {% for categoria, mensagem in mensagens %}
+                <div class="flash {{ categoria }}" role="alert">{{ mensagem }}</div>
+            {% endfor %}
+        {% endwith %}
+        <form method="post" action="{{ url_for('login_admin') }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <label for="senha">Senha do administrador</label>
+            <input id="senha" name="senha" type="password" autocomplete="current-password" required autofocus>
+            <button class="button primary full" type="submit">Entrar no painel</button>
+        </form>
+        <a class="back-link" href="/">← Voltar à loja</a>
+    </main>
+</body>
+</html>

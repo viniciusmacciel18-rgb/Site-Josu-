@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#080b08">
+    <title>Estoque e produtos | Burguer Feitoza</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}?v=1">
+</head>
+<body>
+    <header class="admin-header">
+        <a class="admin-brand" href="/">BF <span>BURGUER FEITOZA</span></a>
+        <div class="header-actions">
+            <a class="button secondary" href="/" target="_blank" rel="noopener">Ver loja ↗</a>
+            <form method="post" action="{{ url_for('sair_admin') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button class="button secondary" type="submit">Sair</button>
+            </form>
+        </div>
+    </header>
+    <main class="admin-main">
+        <section class="page-heading">
+            <div>
+                <p class="eyebrow">ÁREA ADMINISTRATIVA</p>
+                <h1>Produtos e estoque</h1>
+                <p class="muted">Cadastre os packs prontos e acompanhe o que está disponível na loja.</p>
+            </div>
+            <div class="stock-note"><span class="status-dot"></span> A vitrine mostra somente produtos ativos</div>
+        </section>
+
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+            {% for categoria, mensagem in mensagens %}
+                <div class="flash {{ categoria }}" role="status">{{ mensagem }}</div>
+            {% endfor %}
+        {% endwith %}
+
+        <section class="panel add-panel">
+            <div class="panel-heading">
+                <div><p class="eyebrow">NOVO ITEM DE ESTOQUE</p><h2>Adicionar produto</h2></div>
+                <p class="muted">Cada variante é um sabor, uma gramatura e um tamanho de pack.</p>
+            </div>
+            <form class="product-form" method="post" action="{{ url_for('adicionar_produto') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <label>
+                    Sabor / nome do produto
+                    <input name="sabor" type="text" maxlength="40" placeholder="Ex.: Costela" required>
+                </label>
+                <label>
+                    Gramatura por disco
+                    <select name="gramatura" required>
+                        {% for gramatura in gramaturas %}
+                            <option value="{{ gramatura }}">{{ gramatura }}g</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label>
+                    Tamanho do pack
+                    <select name="pack" required>
+                        {% for tamanho in tamanhos_pack %}
+                            <option value="{{ tamanho }}">{{ tamanho }} unidades</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label>
+                    Quantos packs prontos?
+                    <input name="estoque" type="number" min="0" max="100000" value="0" required>
+                </label>
+                <button class="button primary" type="submit">Adicionar à loja</button>
+            </form>
+            <p class="help-text">Variações iniciais de Costela e Fraldinha já estão cadastradas com estoque zero. Use a tabela abaixo para abastecê-las.</p>
+        </section>
+
+        <section class="panel inventory-panel">
+            <div class="panel-heading">
+                <div><p class="eyebrow">CATÁLOGO</p><h2>Estoque por variante</h2></div>
+                <span class="count-badge">{{ produtos|length }} variantes</span>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Produto</th><th>Disponível</th><th>Atualizar estoque</th><th>Registrar venda</th><th>Vitrine</th></tr></thead>
+                    <tbody>
+                        {% for produto in produtos %}
+                            <tr class="{{ 'inactive-row' if not produto.ativo else '' }}">
+                                <td data-label="Produto">
+                                    <strong>{{ produto.sabor }}</strong>
+                                    <span class="variant-detail">{{ produto.pack }} discos · {{ produto.gramatura }}g</span>
+                                </td>
+                                <td data-label="Disponível"><span class="stock-number {{ 'out-of-stock' if produto.estoque == 0 else '' }}">{{ produto.estoque }}</span> packs</td>
+                                <td data-label="Atualizar estoque">
+                                    <form class="inline-form" method="post" action="{{ url_for('atualizar_estoque', produto_id=produto.id) }}">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <label class="sr-only" for="estoque-{{ produto.id }}">Novo estoque para {{ produto.sabor }} pack {{ produto.pack }} de {{ produto.gramatura }}g</label>
+                                        <input id="estoque-{{ produto.id }}" name="estoque" type="number" min="0" max="100000" value="{{ produto.estoque }}" required>
+                                        <button class="button small secondary" type="submit">Salvar</button>
+                                    </form>
+                                </td>
+                                <td data-label="Registrar venda">
+                                    <form class="inline-form sale-form" method="post" action="{{ url_for('registrar_venda', produto_id=produto.id) }}">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <label class="sr-only" for="venda-{{ produto.id }}">Packs vendidos de {{ produto.sabor }} {{ produto.gramatura }}g</label>
+                                        <input id="venda-{{ produto.id }}" name="quantidade" type="number" min="1" max="100000" value="1" required>
+                                        <button class="button small sale-button" type="submit" {% if not produto.ativo or produto.estoque == 0 %}disabled{% endif %}>Baixar venda</button>
+                                    </form>
+                                </td>
+                                <td data-label="Vitrine">
+                                    <form method="post" action="{{ url_for('alterar_status_produto', produto_id=produto.id) }}">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button class="button small {{ 'secondary' if produto.ativo else 'primary' }}" type="submit">{{ 'Ativo' if produto.ativo else 'Oculto' }}</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr><td class="empty-table" colspan="5">Nenhum produto cadastrado.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel sales-panel">
+            <div class="panel-heading">
+                <div><p class="eyebrow">MOVIMENTAÇÃO</p><h2>Vendas registradas recentemente</h2></div>
+            </div>
+            {% if vendas %}
+                <div class="sales-list">
+                    {% for venda in vendas %}
+                        <div class="sale-row">
+                            <span><strong>{{ venda.quantidade }} pack(s)</strong> · {{ venda.sabor }} · {{ venda.pack }} discos de {{ venda.gramatura }}g</span>
+                            <time>{{ venda.registrada_em }}</time>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="muted">As vendas confirmadas pelo açougue aparecerão aqui.</p>
+            {% endif %}
+        </section>
+        <p class="footer-note">O estoque só é descontado quando você registra a venda confirmada neste painel. Consultas pelo WhatsApp não reservam nem alteram o estoque.</p>
+    </main>
+</body>
+</html>
