@@ -201,16 +201,27 @@ function renderCart() {
   }).join("");
 }
 
-function buildWhatsappLink(orderId, orderItems = cart) {
+
+function buildWhatsappLink(orderItems = cart) {
   const subtotal = orderItems.reduce((total, item) => {
     const product = products.find((entry) => entry.id === item.productId);
     return total + product.unitPriceCents * item.pack * item.quantity;
   }, 0);
+
   const lines = orderItems.map((item) => {
     const product = products.find((entry) => entry.id === item.productId);
     return `- ${product.name}, ${item.weight}g: ${item.quantity} pack(s) de ${item.pack} unidades — ${formatPrice(product.unitPriceCents * item.pack * item.quantity)}`;
   });
-  const message = [`Olá, Burguer Feitoza! Gostaria de confirmar o pedido #${orderId.slice(0, 8)}:`, ...lines, `Total dos produtos: ${formatPrice(subtotal)}`, "Por favor, confirmem disponibilidade e entrega."].join("\n");
+
+  const message = [
+    "Olá, Burguer Feitoza! Gostaria de fazer um pedido:",
+    "",
+    ...lines,
+    "",
+    `Total dos produtos: ${formatPrice(subtotal)}`,
+    "Por favor, confirmem disponibilidade, pagamento e entrega."
+  ].join("\n");
+
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
@@ -294,36 +305,23 @@ document.querySelector("#quick-order").addEventListener("click", () => {
 document.querySelector("#open-cart").addEventListener("click", openCart);
 document.querySelector("#close-cart").addEventListener("click", closeCart);
 backdrop.addEventListener("click", closeCart);
-checkoutButton.addEventListener("click", async () => {
+
+checkoutButton.addEventListener("click", () => {
   if (cart.length === 0 || checkoutButton.disabled) return;
 
-  const orderItems = cart.map(({ productId, weight, pack, quantity }) => ({ productId, weight, pack, quantity }));
-  const whatsappWindow = window.open("about:blank", "_blank");
-  checkoutButton.disabled = true;
-  checkoutButton.textContent = "Registrando pedido...";
+  const orderItems = cart.map(({ productId, weight, pack, quantity }) => ({
+    productId,
+    weight,
+    pack,
+    quantity
+  }));
 
-  try {
-    const response = await fetch("/api/orders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: orderItems })
-    });
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.error || "Não foi possível registrar o pedido.");
+  const whatsappUrl = buildWhatsappLink(orderItems);
 
-    const whatsappUrl = buildWhatsappLink(result.order_id, orderItems);
-    if (whatsappWindow) {
-      whatsappWindow.location.href = whatsappUrl;
-    } else {
-      window.location.assign(whatsappUrl);
-    }
-  } catch (error) {
-    if (whatsappWindow) whatsappWindow.close();
-    console.error("Não foi possível registrar o pedido.", error);
-    showToast(error.message || "Não foi possível registrar o pedido. Tente novamente.");
-  } finally {
-    checkoutButton.disabled = false;
-    checkoutButton.innerHTML = 'Enviar pedido no WhatsApp <span>↗</span>';
+  const whatsappWindow = window.open(whatsappUrl, "_blank");
+
+  if (!whatsappWindow) {
+    showToast("Permita a abertura de janelas para enviar seu pedido.");
   }
 });
 cartItems.addEventListener("click", (event) => {
