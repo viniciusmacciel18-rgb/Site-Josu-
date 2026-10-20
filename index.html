@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#171b16">
+    <meta name="description" content="Hambúrgueres artesanais congelados Burguer Feitoza. Escolha seu sabor, gramatura e pack para churrasqueira ou chapa.">
+    <title>Burguer Feitoza — Hambúrguer artesanal congelado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="announcement">
+      <span>Hambúrguer artesanal congelado, pronto para a sua brasa.</span>
+      <span class="announcement-note">Churrasqueira ou chapa · Packs com 6 ou 10 unidades</span>
+    </div>
+
+    <header class="site-header">
+      <div class="brand-group">
+        <a class="brand" href="#" aria-label="Burguer Feitoza, início">
+          <span class="brand-logo-frame" aria-hidden="true"><img class="brand-logo" src="image/Logo%20Neon%20Burger%20Feitoza.png" alt=""></span>
+          <span class="brand-name">BURGUER <b>FEITOZA</b><small>HAMBÚRGUER ARTESANAL</small></span>
+        </a>
+        <div class="menu-wrap">
+          <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="dropdown-menu">
+            <span aria-hidden="true">☰</span> Menu <span class="menu-arrow" aria-hidden="true">⌄</span>
+          </button>
+          <div class="dropdown-menu" id="dropdown-menu" hidden>
+            <a href="#catalogo">🥩 Hambúrgueres artesanais</a>
+            <a href="#diferenciais">❄️ Congelados com cuidado</a>
+            <a href="#preparo">🔥 Dicas para grelha e chapa</a>
+            <a href="#contato">📦 Fale com a Feitoza</a>
+          </div>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="#catalogo">Nossos hambúrgueres</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <button class="cart-trigger" id="open-cart" type="button" aria-label="Abrir carrinho">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 1.9-1.4L22 8H6M10 20a.8.8 0 1 1-1.6 0 .8.8 0 0 1 1.6 0Zm9 0a.8.8 0 1 1-1.6 0 .8.8 0 0 1 1.6 0Z"/></svg>
+          <span>Carrinho</span><span class="cart-count" id="cart-count">0 packs</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> ARTESANAL E CONGELADO</div>
+          <h1>O hambúrguer<br>perfeito para o<br><span>seu churrasco.</span></h1>
+          <p>Carne selecionada, porções generosas e muito sabor. Escolha entre seis receitas artesanais, quatro gramaturas e packs para compartilhar.</p>
+          <div class="hero-actions">
+            <a class="button button-orange" href="#catalogo">Ver catálogo <span aria-hidden="true">↘</span></a>
+            <button class="text-button" id="quick-order" type="button">Fazer pedido rápido <span aria-hidden="true">↗</span></button>
+          </div>
+          <div class="hero-proof"><span>160g</span><i></i><span>200g</span><i></i><span>240g</span><i></i><span>280g</span><b>· packs de 6 ou 10</b></div>
+        </div>
+        <div class="hero-visual">
+          <img src="image/images%20(3).jpg" alt="Hambúrgueres artesanais grelhando sobre a churrasqueira">
+          <div class="image-tag"><span>100%</span><br>artesanal</div>
+          <div class="hero-sticker"><span>DO<br>FREEZER<br>PRO<br>FOGO</span><b>✳</b></div>
+          <div class="visual-caption"><span>O ponto da brasa<br>começa aqui.</span><span class="caption-arrow">↘</span></div>
+        </div>
+      </section>
+
+      <section class="ticker" aria-label="Diferenciais">
+        <div class="ticker-track"><span>CARNE SELECIONADA</span><b>✳</b><span>CONGELADO</span><b>✳</b><span>CHURRASQUEIRA OU CHAPA</span><b>✳</b><span>PACKS DE 6 OU 10</span><b>✳</b><span>CARNE SELECIONADA</span><b>✳</b><span>CONGELADO</span><b>✳</b><span>CHURRASQUEIRA OU CHAPA</span><b>✳</b><span>PACKS DE 6 OU 10</span></div>
+      </section>
+
+      <section class="catalog-section" id="catalogo">
+        <div class="section-heading">
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> ESCOLHA SEU FAVORITO</div><h2>Nossos hambúrgueres<br><span>artesanais.</span></h2></div>
+          <p>Preços por unidade. Selecione a gramatura e o tamanho do pack. Vendemos em packs de 6 ou 10 hambúrgueres.</p>
+        </div>
+        <div class="product-grid" id="product-grid"></div>
+      </section>
+
+      <section class="highlights-section" id="diferenciais">
+        <div class="highlights-heading">
+          <div class="eyebrow"><span class="eyebrow-line"></span> QUALIDADE FEITOZA</div>
+          <h2>Do nosso preparo<br><span>para a sua grelha.</span></h2>
+          <p>Carne selecionada, porções generosas e cuidado em cada etapa.</p>
+        </div>
+        <div class="highlights-grid">
+          <article class="highlight-card"><span aria-hidden="true">🥩</span><h3>Carne de verdade</h3><p>Receitas artesanais pensadas para valorizar o sabor da carne.</p></article>
+          <article class="highlight-card"><span aria-hidden="true">❄️</span><h3>Congelados com cuidado</h3><p>Praticidade para ter hambúrguer artesanal à mão quando a fome bater.</p></article>
+          <article class="highlight-card"><span aria-hidden="true">⚖️</span><h3>Do seu jeito</h3><p>Escolha entre 160g, 200g, 240g ou 280g para seu churrasco ou chapa.</p></article>
+        </div>
+      </section>
+
+      <section class="prep-section" id="preparo">
+        <div class="prep-mark" aria-hidden="true">♨</div>
+        <div class="prep-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> DICA DE PREPARO</div>
+          <h2>Grelha quente.<br><span>Hambúrguer suculento.</span></h2>
+          <p>Leve o hambúrguer ainda congelado à grelha ou à chapa bem quente. Doure dos dois lados sem pressionar a carne e finalize no ponto que você mais gosta.</p>
+        </div>
+        <a class="button button-dark" href="#catalogo">Escolher meus hambúrgueres <span aria-hidden="true">↗</span></a>
+      </section>
+
+      <section class="campaign-art-section" aria-labelledby="campaign-art-title">
+        <div class="campaign-art-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> A ARTE DA BRASA</div>
+          <h2 id="campaign-art-title">Feito à mão.<br><span>Feito pra brasa.</span></h2>
+          <p>A arte da Burguer Feitoza, inspirada nos nossos hambúrgueres artesanais. Escolha seu pack ou envie seu pedido direto pra gente.</p>
+          <div class="campaign-art-actions">
+            <a class="button button-orange" href="#catalogo">Escolher meu burger <span aria-hidden="true">↗</span></a>
+            <a class="campaign-whatsapp" href="https://wa.me/5547997221504" target="_blank" rel="noopener noreferrer">Pedir pelo WhatsApp ↗</a>
+          </div>
+        </div>
+        <a class="campaign-art-preview" href="arte-burguer-feitoza.svg" target="_blank" rel="noopener noreferrer" aria-label="Abrir a arte promocional Burguer Feitoza em tamanho completo">
+          <img src="./arte-burguer-feitoza.svg" alt="Arte promocional Burguer Feitoza: dois hambúrgueres grelhados, gramaturas, packs e chamada para churrasqueira ou chapa" width="1080" height="1350" decoding="async">
+          <span>Abrir arte completa ↗</span>
+        </a>
+      </section>
+
+      <section class="closing-banner">
+        <div><span>JÁ DEU FOME?</span><h2>Acenda a brasa.<br><i>A gente cuida do burger.</i></h2></div>
+        <a class="button button-light" href="#catalogo">Montar meu pedido <span aria-hidden="true">↗</span></a>
+        <span class="closing-spark" aria-hidden="true">✳</span>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contato">
+      <a class="brand" href="#" aria-label="Burguer Feitoza, início"><span class="brand-logo-frame" aria-hidden="true"><img class="brand-logo" src="image/Logo%20Neon%20Burger%20Feitoza.png" alt=""></span><span class="brand-name">BURGUER <b>FEITOZA</b><small>HAMBÚRGUER ARTESANAL</small></span></a>
+      <span>Hambúrguer artesanal congelado para churrasqueiros e apaixonados por burger.</span>
+      <a class="footer-contact" href="https://wa.me/5547997221504" target="_blank" rel="noopener noreferrer">Fale com a gente no WhatsApp ↗</a>
+      <small>© 2026 Burguer Feitoza · Todos os direitos reservados</small>
+    </footer>
+
+    <div class="cart-backdrop" id="cart-backdrop" hidden></div>
+    <aside class="cart-drawer" id="cart-drawer" aria-labelledby="cart-title" aria-hidden="true">
+      <div class="drawer-header"><div><span class="product-kicker">PEDIDO FEITOZA</span><h2 id="cart-title">Seu carrinho<span>.</span></h2></div><button class="close-cart" id="close-cart" type="button" aria-label="Fechar carrinho">×</button></div>
+      <div class="cart-items" id="cart-items"></div>
+      <div class="drawer-footer" id="drawer-footer" hidden><div class="subtotal-row"><span>Total</span><strong id="cart-subtotal">R$ 0,00</strong></div><p>O pedido será registrado antes de abrir o WhatsApp.</p><button class="button button-orange checkout-button" id="checkout-button" type="button">Enviar pedido no WhatsApp <span>↗</span></button></div>
+    </aside>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>

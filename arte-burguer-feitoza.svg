@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="title description">
+  <title id="title">Burguer Feitoza — artesanal de verdade</title>
+  <desc id="description">Arte promocional com dois hambúrgueres artesanais ilustrados, sobrepostos e marcados na grelha, sobre fundo verde-escuro.</desc>
+  <defs>
+    <radialGradient id="background" cx="50%" cy="41%" r="72%">
+      <stop offset="0" stop-color="#203522"/>
+      <stop offset="1" stop-color="#101710"/>
+    </radialGradient>
+    <linearGradient id="patty-top" x1="0" y1="0" x2=".18" y2="1">
+      <stop offset="0" stop-color="#bd7240"/>
+      <stop offset=".5" stop-color="#88472f"/>
+      <stop offset="1" stop-color="#4a2922"/>
+    </linearGradient>
+    <linearGradient id="patty-bottom" x1="0" y1="0" x2=".15" y2="1">
+      <stop offset="0" stop-color="#a85b38"/>
+      <stop offset=".55" stop-color="#713a2b"/>
+      <stop offset="1" stop-color="#39221e"/>
+    </linearGradient>
+    <linearGradient id="grill-mark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#45251f"/>
+      <stop offset="1" stop-color="#291b18"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="22"/>
+      <feOffset dy="20"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".4"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="back-patty-clip">
+      <path d="M161 542C146 504 168 455 210 422C259 382 329 368 418 374C493 379 564 405 605 447C633 475 642 511 624 545C608 576 570 593 522 603C433 621 292 612 215 587C188 578 170 563 161 542Z"/>
+    </clipPath>
+    <clipPath id="front-patty-clip">
+      <path d="M452 702C439 658 465 614 510 583C563 546 642 533 731 541C812 548 885 576 923 620C948 649 956 684 940 715C923 750 884 769 832 779C741 798 586 786 509 758C480 748 461 729 452 702Z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1080" height="1350" fill="url(#background)"/>
+  <circle cx="540" cy="615" r="370" fill="none" stroke="#e59b53" stroke-opacity=".07" stroke-width="2"/>
+  <circle cx="540" cy="615" r="322" fill="none" stroke="#f5ead5" stroke-opacity=".045" stroke-width="1"/>
+  <path d="M86 118H994M86 1211H994" stroke="#f5ead5" stroke-opacity=".18" stroke-width="2"/>
+  <path d="M87 118H198" stroke="#e59b53" stroke-width="4"/>
+
+  <g font-family="Montserrat,Arial,sans-serif">
+    <text x="88" y="82" fill="#f5ead5" font-size="28" font-weight="800" letter-spacing="5">BURGUER</text>
+    <text x="88" y="108" fill="#e59b53" font-size="21" font-weight="800" letter-spacing="7">FEITOZA</text>
+    <text x="992" y="92" fill="#c9d5c4" font-size="14" font-weight="700" letter-spacing="3" text-anchor="end">DESDE A PRIMEIRA BRASA</text>
+
+    <text x="540" y="205" fill="#e59b53" font-size="17" font-weight="700" letter-spacing="6" text-anchor="middle">FEITO À MÃO. FEITO PRA BRASA.</text>
+    <text x="540" y="275" fill="#f5ead5" font-size="57" font-weight="900" letter-spacing="-2" text-anchor="middle">ARTESANAL</text>
+    <text x="540" y="339" fill="#e59b53" font-size="54" font-weight="900" letter-spacing="-1" text-anchor="middle">DE VERDADE.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <ellipse cx="547" cy="798" rx="386" ry="81" fill="#070b07" opacity=".48"/>
+
+    <path d="M161 542C146 504 168 455 210 422C259 382 329 368 418 374C493 379 564 405 605 447C633 475 642 511 624 545C608 576 570 593 522 603C433 621 292 612 215 587C188 578 170 563 161 542Z" fill="url(#patty-top)" stroke="#d38a52" stroke-opacity=".5" stroke-width="5"/>
+    <path d="M178 538C205 566 260 576 331 578C431 582 541 570 600 539C591 565 558 583 520 592C428 614 294 602 220 580C199 574 184 560 178 538Z" fill="#3d241f" opacity=".62"/>
+    <path d="M203 464C252 419 329 402 409 405C478 408 536 428 572 457" fill="none" stroke="#e5a368" stroke-opacity=".34" stroke-width="10" stroke-linecap="round"/>
+    <g clip-path="url(#back-patty-clip)" fill="none" stroke="url(#grill-mark)" stroke-linecap="round">
+      <path d="M241 369L191 565M310 362L258 600M381 364L333 612M452 374L402 616M523 397L467 610M590 432L535 589" stroke-width="22"/>
+      <path d="M247 369L197 565M316 362L264 600M387 364L339 612M458 374L408 616M529 397L473 610M596 432L541 589" stroke="#d58a54" stroke-opacity=".34" stroke-width="4"/>
+    </g>
+    <g fill="#e5a368" opacity=".5">
+      <ellipse cx="224" cy="502" rx="5" ry="3" transform="rotate(-24 224 502)"/>
+      <ellipse cx="349" cy="438" rx="7" ry="3" transform="rotate(20 349 438)"/>
+      <ellipse cx="488" cy="482" rx="6" ry="3" transform="rotate(-18 488 482)"/>
+      <ellipse cx="288" cy="549" rx="5" ry="3" transform="rotate(20 288 549)"/>
+      <ellipse cx="548" cy="535" rx="7" ry="3" transform="rotate(-20 548 535)"/>
+    </g>
+
+    <path d="M452 702C439 658 465 614 510 583C563 546 642 533 731 541C812 548 885 576 923 620C948 649 956 684 940 715C923 750 884 769 832 779C741 798 586 786 509 758C480 748 461 729 452 702Z" fill="url(#patty-bottom)" stroke="#c77b48" stroke-opacity=".52" stroke-width="5"/>
+    <path d="M466 699C495 732 555 746 628 751C731 758 855 744 917 711C909 740 871 759 829 768C738 787 593 773 515 748C491 740 474 722 466 699Z" fill="#33211d" opacity=".61"/>
+    <path d="M510 612C563 577 638 565 721 571C792 576 851 598 889 627" fill="none" stroke="#dc9460" stroke-opacity=".31" stroke-width="10" stroke-linecap="round"/>
+    <g clip-path="url(#front-patty-clip)" fill="none" stroke="url(#grill-mark)" stroke-linecap="round">
+      <path d="M560 536L496 753M632 532L568 775M705 536L642 787M778 547L716 788M850 571L789 780M919 608L861 761" stroke-width="22"/>
+      <path d="M566 536L502 753M638 532L574 775M711 536L648 787M784 547L722 788M856 571L795 780M925 608L867 761" stroke="#d38a52" stroke-opacity=".33" stroke-width="4"/>
+    </g>
+    <g fill="#e4a06a" opacity=".48">
+      <ellipse cx="521" cy="675" rx="6" ry="3" transform="rotate(-20 521 675)"/>
+      <ellipse cx="665" cy="583" rx="6" ry="3" transform="rotate(18 665 583)"/>
+      <ellipse cx="825" cy="640" rx="7" ry="3" transform="rotate(-17 825 640)"/>
+      <ellipse cx="606" cy="737" rx="5" ry="3" transform="rotate(16 606 737)"/>
+      <ellipse cx="884" cy="706" rx="5" ry="3" transform="rotate(-22 884 706)"/>
+    </g>
+  </g>
+
+  <g font-family="Montserrat,Arial,sans-serif">
+    <g transform="translate(88 877)">
+      <circle cx="38" cy="38" r="36" fill="#e59b53"/>
+      <text x="38" y="33" fill="#172016" font-size="17" font-weight="900" text-anchor="middle">4</text>
+      <text x="38" y="51" fill="#172016" font-size="10" font-weight="800" letter-spacing="1" text-anchor="middle">PESOS</text>
+      <text x="91" y="31" fill="#f5ead5" font-size="17" font-weight="800" letter-spacing="1">160g · 200g</text>
+      <text x="91" y="58" fill="#f5ead5" font-size="17" font-weight="800" letter-spacing="1">240g · 280g</text>
+    </g>
+    <g transform="translate(625 877)">
+      <circle cx="38" cy="38" r="36" fill="#f5ead5"/>
+      <text x="38" y="44" fill="#172016" font-size="18" font-weight="900" text-anchor="middle">6/10</text>
+      <text x="91" y="31" fill="#f5ead5" font-size="17" font-weight="800" letter-spacing="1">UNIDADES</text>
+      <text x="91" y="58" fill="#c9d5c4" font-size="13" font-weight="600" letter-spacing="1">POR PACK</text>
+    </g>
+
+    <rect x="88" y="1000" width="904" height="135" rx="12" fill="#0b3010" stroke="#174627" stroke-width="2"/>
+    <path d="M113 1030H967" stroke="#e59b53" stroke-opacity=".45" stroke-width="1"/>
+    <text x="540" y="1079" fill="#f5ead5" font-size="28" font-weight="900" letter-spacing="2" text-anchor="middle">CHURRASQUEIRA <tspan fill="#e59b53">OU</tspan> CHAPA</text>
+    <text x="540" y="1110" fill="#c9d5c4" font-size="15" font-weight="600" letter-spacing="3" text-anchor="middle">DO FREEZER DIRETO PARA A GRELHA</text>
+
+    <text x="88" y="1181" fill="#c9d5c4" font-size="13" font-weight="600" letter-spacing="2">CARNE SELECIONADA · SABOR DE VERDADE</text>
+    <rect x="701" y="1151" width="291" height="56" rx="8" fill="#287b45"/>
+    <text x="846" y="1186" fill="#fff" font-size="16" font-weight="800" letter-spacing="1" text-anchor="middle">PEÇA PELO WHATSAPP ↗</text>
+    <text x="540" y="1264" fill="#c9d5c4" font-size="13" font-weight="700" letter-spacing="3" text-anchor="middle">BURGUER FEITOZA  ·  FEITO PRA JUNTAR GENTE</text>
+  </g>
+</svg>
